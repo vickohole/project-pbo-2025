@@ -22,7 +22,7 @@ class PaymentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
-    protected static ?string $navigationLabel = 'Pembayaran';
+    protected static ?string $navigationLabel = 'Payment';
 
 
     protected static ?int $navigationSort = 2;
@@ -34,20 +34,20 @@ class PaymentResource extends Resource
                 Forms\Components\TextInput::make('amount')
                     ->numeric()
                     ->required()
-                    ->label('Jumlah Pembayaran'),
+                    ->label('Amount'),
 
                 Forms\Components\TextInput::make('method')
                     ->required()
                     ->maxLength(255)
-                    ->label('Metode Pembayaran'),
+                    ->label('Payment Method'),
 
                 Forms\Components\Textarea::make('description')
-                    ->label('Deskripsi')
+                    ->label('Description')
                     ->maxLength(65535)
                     ->nullable(),
 
                 Forms\Components\DatePicker::make('paid_at')
-                    ->label('Tanggal Pembayaran')
+                    ->label('Payment Date')
                     ->required(),
             ]);
     }
@@ -59,18 +59,18 @@ class PaymentResource extends Resource
                 Tables\Columns\TextColumn::make('id')->label('ID')->sortable(),
 
                 Tables\Columns\TextColumn::make('amount')
-                    ->label('Jumlah')
+                    ->label('Amount')
                     ->money('usd', true),
 
-                Tables\Columns\TextColumn::make('method')->label('Metode')->sortable(),
+                Tables\Columns\TextColumn::make('method')->label('Payment Method')->sortable(),
 
                 Tables\Columns\TextColumn::make('paid_at')
-                    ->label('Tanggal Pembayaran')
+                    ->label('Payment Date')
                     ->date()
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Dibuat')
+                    ->label('Created At')
                     ->dateTime()
                     ->sortable(),
             ])
